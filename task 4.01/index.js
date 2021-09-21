@@ -36,8 +36,8 @@ addBtn.addEventListener("click",()=>{
 })
 
 function Delete(event){
-    let taskname=event.target.previousElementSibling.value
-    tasklist.splice(taskname,1)
+    taskname=event.target.previousElementSibling.previousElementSibling.value
+    tasklist = tasklist.filter((item)=>item !== taskname)
     event.target.parentNode.remove()
     localStorage["task"]=tasklist.toString()
 }
@@ -46,7 +46,6 @@ var oldtaskname
 function edit(event){
     event.target.previousElementSibling.disabled = false
     oldtaskname=event.target.previousElementSibling.value;
-    console.log(oldtaskname)
     btn=document.createElement("button")
     btn.innerHTML="confirm"
     btn.className+="confirm-btn"
